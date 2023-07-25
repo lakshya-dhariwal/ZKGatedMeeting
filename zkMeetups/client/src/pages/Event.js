@@ -15,7 +15,7 @@ import Spinner from "../components/Spinner";
 import { toast } from "react-hot-toast";
 
 function Event() {
-  const { address, isConnected } = useAccount();
+  const { address } = useAccount();
   const [match, params] = useRoute("/event/:id");
   console.log({ param: params.id });
   const [event, setEvent] = React.useState([]);
@@ -248,16 +248,6 @@ function Event() {
                 <BsGithub className="mr-3" />
                 {"Prove with Github"}
               </div>
-
-              {/* <h1 className="text-gray-300 text-[18px]  ">Twitter Proof</h1>
-              <h2 className="text-[15px] mb-3">
-                Event requires minimum {event.git_req} followers
-              </h2>
-              <div className="mb-10 bg-[#0E1829] border-[1px] border-gray-600 flex p-2 items-center justify-center rounded-full text-gray-100">
-                {" "}
-                <BsGithub className="mr-3" />
-                Prove with Github
-              </div> */}
             </div>
             {eligiblity && (
               <div
