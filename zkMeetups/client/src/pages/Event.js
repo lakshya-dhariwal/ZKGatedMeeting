@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-hot-toast";
 import Meet from "./meet";
 import Avvvatars from "avvvatars-react";
 import { AiFillCalendar } from "react-icons/ai";
@@ -10,9 +11,7 @@ import { ImTicket } from "react-icons/im";
 import { useAccount } from "wagmi";
 import { useRoute } from "wouter";
 import supabase from "../services/supabase";
-import EventCard from "../components/EventCard";
 import Spinner from "../components/Spinner";
-import { toast } from "react-hot-toast";
 
 function Event() {
   const { address } = useAccount();
@@ -55,7 +54,6 @@ function Event() {
     const { data } = await axios.get(
       `https://api.github.com/users/${user_name}/repos`
     );
-    const repo_total = data.length;
     const res = await axios.get(
       `http://localhost:8080/api/twitter/generate-proof?followers=201&threshold=200`
     );
@@ -88,6 +86,7 @@ function Event() {
     setEligiblity(true);
   };
 
+  //checks
   if (event?.host === address) return <Meet />;
   else if (event?.allowlist?.includes(address)) return <Meet />;
   else if (event?.applicants?.includes(address))
@@ -205,17 +204,6 @@ function Event() {
                   </div>
                 </div>
               </div>
-
-              {/* <h1 className="text-gray-300 text-[18px] pt-3">Age Proof</h1>
-              <h2 className="text-[15px] mb-3">
-                Event requires minimum age of {event.age_req} years
-              </h2>
-              <div className=" bg-[#0E1829]  border-[1px] border-gray-600 flex p-2 items-center justify-center rounded-full text-gray-100">
-                {" "}
-                <BsGithub className="mr-3" />
-                Prove with
-              </div> */}
-
               <h1 className="text-gray-300 text-[18px]  pt-3">
                 Budiler's Proof
               </h1>
