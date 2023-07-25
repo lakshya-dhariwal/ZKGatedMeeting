@@ -26,7 +26,8 @@ function App() {
   const { address } = useAccount();
   return (
     <div className="dark">
-      {" "}
+      <div className="body-bg-shape"></div>
+
       <WagmiConfig client={client}>
         <ConnectKitProvider
           theme="nouns"
@@ -36,8 +37,8 @@ function App() {
             "--ck-border-radius": 42,
           }}
         >
-          <Toaster />
           <Navbar connect={<ConnectKitButton />} />
+          <Toaster />
           <div className="mt-[60px]">
             <Route path="/">
               <Home />
@@ -48,16 +49,15 @@ function App() {
             <Route path="/host">
               <Host />
             </Route>
-            <Route path="/event/:id">
-              <Event />
-            </Route>
             <Route path="/test/42069">
               <Meet />
+            </Route>
+            <Route path="/event/:id">
+              <Event />
             </Route>
           </div>
         </ConnectKitProvider>
       </WagmiConfig>
-      <div className="body-bg-shape"></div>
     </div>
   );
 }

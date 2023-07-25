@@ -12,4 +12,5 @@ export const getEvents = async () => {
   const { data: events, error } = await supabase.from("events").select("*");
   return { events, error };
 };
+
 export default supabase;
